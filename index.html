@@ -1,191 +1,109 @@
-
 <!DOCTYPE html>
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fashion C | Premium Fashion Store</title>
+<title>FASHION C | Premium Fashion</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:Arial,sans-serif;background:#fff;color:#111}
-header{background:#080808;color:white;padding:20px 6%;display:flex;justify-content:space-between;align-items:center}
-.logo{font-size:27px;font-weight:900;letter-spacing:3px}
-nav a{color:white;text-decoration:none;margin-left:17px;font-size:13px}
-.hero{background:#111;color:white;text-align:center;padding:75px 15px}
-.hero h1{font-size:42px;letter-spacing:3px;margin-bottom:15px}
-.hero p{color:#ccc;margin-bottom:25px}
-.btn{background:white;color:black;border:0;padding:13px 25px;cursor:pointer;font-weight:bold;text-decoration:none;display:inline-block}
-.section{padding:45px 6%}
-.section h2{text-align:center;font-size:27px;margin-bottom:30px;letter-spacing:2px}
-.products{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
-.product{border:1px solid #eee;padding-bottom:18px;text-align:center}
-.product img{width:100%;height:260px;object-fit:cover;background:#eee}
-.product h3{margin:14px 5px 8px;font-size:17px}
-.price{font-weight:bold;margin-bottom:13px}
-.product button{background:#111;color:white;padding:11px 20px;border:0;cursor:pointer}
-.product button:hover{background:#444}
-.cart{background:#f5f5f5;padding:25px;margin-top:30px}
-.cart h2{text-align:left;margin-bottom:15px}
-.cart-item{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid #ddd;gap:10px}
-.cart-item button{padding:4px 9px}
-.total{font-size:20px;font-weight:bold;margin:20px 0}
-form{max-width:500px;margin:25px auto}
-input,textarea{width:100%;padding:13px;margin:8px 0;border:1px solid #ccc;font-size:15px}
-form button{width:100%;padding:15px;background:#111;color:white;border:0;font-size:16px;cursor:pointer}
-footer{background:#080808;color:white;text-align:center;padding:30px 10px;margin-top:40px}
-footer p{margin:8px}
-@media(max-width:650px){
- .products{grid-template-columns:repeat(2,1fr);gap:12px}
- .product img{height:190px}
- .hero h1{font-size:30px}
- nav a{margin-left:8px;font-size:11px}
- .logo{font-size:21px}
- .section{padding:35px 4%}
-}
+header{background:#000;color:white;padding:22px;text-align:center}
+header h1{letter-spacing:5px}
+nav{display:flex;justify-content:center;gap:22px;padding:15px;border-bottom:1px solid #ddd}
+nav a{color:#111;text-decoration:none;font-size:14px}
+.hero{background:#111;color:white;text-align:center;padding:75px 20px}
+.hero h2{font-size:38px;margin-bottom:15px}
+button{background:#000;color:white;border:0;padding:12px 20px;cursor:pointer}
+section{padding:30px 18px}
+.products{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}
+.product{border:1px solid #ddd;padding:10px}
+.product img{width:100%;height:180px;object-fit:cover;background:#eee}
+.product h3{margin:10px 0}
+.price{font-weight:bold;margin-bottom:10px}
+input,textarea{width:100%;padding:13px;margin:8px 0;border:1px solid #ccc}
+#order{max-width:500px;margin:auto}
+footer{background:#000;color:white;text-align:center;padding:25px;margin-top:30px}
+@media(min-width:700px){.products{grid-template-columns:repeat(4,1fr)}}
 </style>
 </head>
 <body>
-
 <header>
- <div class="logo">FASHION C.</div>
- <nav>
-  <a href="#home">HOME</a>
-  <a href="#shop">SHOP</a>
-  <a href="#cart">CART 🛒</a>
- </nav>
+<h1>FASHION C</h1>
+<p>PREMIUM BLACK & WHITE FASHION</p>
 </header>
-
-<section class="hero" id="home">
- <h1>FASHION C</h1>
- <p>YOUR STYLE. YOUR IDENTITY.</p>
- <a href="#shop" class="btn">SHOP NOW</a>
+<nav>
+<a href="#home">HOME</a>
+<a href="#products">PRODUCTS</a>
+<a href="#order">ORDER</a>
+</nav>
+<div class="hero" id="home">
+<h2>STYLE YOUR LIFE</h2>
+<p>Discover Your Premium Fashion Collection</p>
+<br>
+<a href="#products"><button>SHOP NOW</button></a>
+</div>
+<section id="products">
+<h2>OUR COLLECTION</h2>
+<br>
+<div class="products" id="productList"></div>
 </section>
-
-<section class="section" id="shop">
- <h2>OUR COLLECTION</h2>
- <div class="products" id="products"></div>
+<section id="order">
+<h2>PLACE YOUR ORDER</h2>
+<form id="orderForm">
+<input id="name" placeholder="Your Name" required>
+<input id="phone" placeholder="Mobile Number" required>
+<textarea id="address" placeholder="Delivery Address" required></textarea>
+<input id="product" placeholder="Product Name" required>
+<input id="quantity" type="number" min="1" value="1" required>
+<button type="submit">PLACE ORDER</button>
+</form>
+<p id="message"></p>
 </section>
-
-<section class="section" id="cart">
- <div class="cart">
-  <h2>YOUR SHOPPING CART 🛒</h2>
-  <div id="cartItems">Your cart is empty.</div>
-  <div class="total">Total: ৳<span id="total">0</span></div>
-  <h2>PLACE YOUR ORDER</h2>
-  <form id="orderForm">
-   <input id="customerName" placeholder="Your Name" required>
-   <input id="phone" type="tel" placeholder="Mobile Number" required>
-   <textarea id="address" placeholder="Full Delivery Address" required></textarea>
-   <textarea id="note" placeholder="Order Note (Optional)"></textarea>
-   <button type="submit">ORDER VIA WHATSAPP</button>
-  </form>
- </div>
-</section>
-
 <footer>
- <h2>FASHION C.</h2>
- <p>Premium Fashion Collection</p>
- <p>Thank you for shopping with us!</p>
- <p>© 2026 Fashion C. All Rights Reserved.</p>
+<h2>FASHION C</h2>
+<p>Premium Fashion Store</p>
+<p>© 2026 FASHION C</p>
 </footer>
-
 <script>
-// নিজের পণ্যের তথ্য এখানে পরিবর্তন করবে
-const products = [
- {id:1,name:"Elegant Black Dress",price:1200,image:"https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=600"},
- {id:2,name:"Premium White Outfit",price:1500,image:"https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=600"},
- {id:3,name:"Stylish Fashion Dress",price:1350,image:"https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600"},
- {id:4,name:"Classic Casual Wear",price:950,image:"https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=600"},
- {id:5,name:"Luxury Fashion Look",price:1800,image:"https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=600"},
- {id:6,name:"Modern Outfit",price:1100,image:"https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600"}
+const products=[
+{name:"Premium Black Shirt",price:850,image:"https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=500"},
+{name:"Classic White Shirt",price:750,image:"https://images.unsplash.com/photo-1603252109303-2751441dd157?w=500"},
+{name:"Premium Jacket",price:1800,image:"https://images.unsplash.com/photo-1551028719-00167b16eac5?w=500"},
+{name:"Casual Fashion",price:950,image:"https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=500"}
 ];
-
-// WhatsApp নম্বর: দেশের কোডসহ লিখবে, + বা space ছাড়া
-const WHATSAPP_NUMBER = "8801925812213";
-
-let cart = [];
-
-function showProducts(){
- const box=document.getElementById("products");
- box.innerHTML=products.map(p=>`
-  <div class="product">
-   <img src="${p.image}" alt="${p.name}">
-   <h3>${p.name}</h3>
-   <div class="price">৳${p.price}</div>
-   <button onclick="addCart(${p.id})">ADD TO CART</button>
-  </div>
- `).join("");
-}
-
-function addCart(id){
- const p=products.find(x=>x.id===id);
- const item=cart.find(x=>x.id===id);
- if(item)item.qty++;
- else cart.push({...p,qty:1});
- showCart();
- alert(p.name+" added to cart!");
-}
-
-function showCart(){
- const box=document.getElementById("cartItems");
- if(cart.length===0){
-  box.innerHTML="Your cart is empty.";
- }else{
-  box.innerHTML=cart.map(p=>`
-   <div class="cart-item">
-    <span>${p.name} × ${p.qty}</span>
-    <span>৳${p.price*p.qty}
-    <button onclick="removeCart(${p.id})">×</button></span>
-   </div>
-  `).join("");
- }
- document.getElementById("total").innerText=
- cart.reduce((sum,p)=>sum+p.price*p.qty,0);
-}
-
-function removeCart(id){
- cart=cart.filter(p=>p.id!==id);
- showCart();
-}
-
-document.getElementById("orderForm").addEventListener("submit",function(e){
- e.preventDefault();
-
- if(cart.length===0){
-  alert("Please add a product first!");
-  return;
- }
-
- if(WHATSAPP_NUMBER==="8801925812213"){
-  alert("Please set your WhatsApp business number in the code first.");
-  return;
- }
-
- const name=document.getElementById("customerName").value;
- const phone=document.getElementById("phone").value;
- const address=document.getElementById("address").value;
- const note=document.getElementById("note").value;
- const total=cart.reduce((sum,p)=>sum+p.price*p.qty,0);
-
- let message="NEW ORDER - FASHION C%0A%0A";
- message+="Name: "+encodeURIComponent(name)+"%0A";
- message+="Phone: "+encodeURIComponent(phone)+"%0A";
- message+="Address: "+encodeURIComponent(address)+"%0A%0A";
- message+="PRODUCTS:%0A";
-
- cart.forEach(p=>{
-  message+=encodeURIComponent(p.name)+" x "+p.qty+
-  " = Tk "+(p.price*p.qty)+"%0A";
- });
-
- message+="%0ATotal: Tk "+total;
- message+="%0ANote: "+encodeURIComponent(note);
-
- window.open("https://wa.me/"+WHATSAPP_NUMBER+"?text="+message,"_blank");
+const list=document.getElementById("productList");
+products.forEach(p=>{
+const card=document.createElement("div");
+card.className="product";
+const img=document.createElement("img");
+img.src=p.image;
+img.alt=p.name;
+const title=document.createElement("h3");
+title.textContent=p.name;
+const price=document.createElement("p");
+price.className="price";
+price.textContent="৳"+p.price;
+const btn=document.createElement("button");
+btn.textContent="ORDER NOW";
+btn.onclick=()=>{
+document.getElementById("product").value=p.name;
+document.getElementById("order").scrollIntoView({behavior:"smooth"});
+};
+card.append(img,title,price,btn);
+list.appendChild(card);
 });
-
-showProducts();
-showCart();
+document.getElementById("orderForm").addEventListener("submit",async e=>{
+e.preventDefault();
+const order={
+name:document.getElementById("name").value,
+phone:document.getElementById("phone").value,
+address:document.getElementById("address").value,
+product:document.getElementById("product").value,
+quantity:document.getElementById("quantity").value
+};
+document.getElementById("message").textContent=
+"অর্ডার ফর্ম তৈরি হয়েছে। Database সংযুক্ত না থাকায় অর্ডার এখনো সংরক্ষিত হয়নি।";
+});
 </script>
 </body>
 </html>
